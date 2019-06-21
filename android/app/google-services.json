@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "644496993369",
+    "firebase_url": "https://pantry-mate-42d7b.firebaseio.com",
+    "project_id": "pantry-mate-42d7b",
+    "storage_bucket": "pantry-mate-42d7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644496993369:android:42d475a09eeabd19",
+        "android_client_info": {
+          "package_name": "com.example.pantry_mate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644496993369-bm2f09f2s149ib7hmh6804rvf757mebl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEXL0bTML4cyQKxxGIgE3XF_kLnJKMxD4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644496993369-bm2f09f2s149ib7hmh6804rvf757mebl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
