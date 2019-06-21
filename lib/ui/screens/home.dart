@@ -6,7 +6,7 @@ class HomeScreen extends StatelessWidget {
     double _iconSize = 20.0;
 
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
