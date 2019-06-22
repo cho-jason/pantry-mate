@@ -16,7 +16,7 @@ List<User> getUsers() {
 List<Ingredient> getIngredients() {
   return [
     Ingredient(
-      id: 0,
+      id: '0',
       category: IngredientCategory.grain,
       name: 'oat',
       unitVal: 1000,
@@ -24,7 +24,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 1,
+      id: '1',
       category: IngredientCategory.dairy,
       name: 'milk',
       unitVal: 1000,
@@ -32,7 +32,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 2,
+      id: '2',
       category: IngredientCategory.fruit,
       name: 'banana',
       unitVal: 5,
@@ -40,7 +40,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 3,
+      id: '3',
       category: IngredientCategory.sugar,
       name: 'honey',
       unitVal: 1000,
@@ -48,7 +48,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 4,
+      id: '4',
       category: IngredientCategory.spice,
       name: 'cinnamon',
       unitVal: 100,
@@ -56,7 +56,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 5,
+      id: '5',
       category: IngredientCategory.dairy,
       name: 'eggs',
       unitVal: 12,
@@ -64,7 +64,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 6,
+      id: '6',
       category: IngredientCategory.dairy,
       name: 'milk',
       unitVal: 1000,
@@ -72,7 +72,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 7,
+      id: '7',
       category: IngredientCategory.dairy,
       name: 'butter',
       unitVal: 100,
@@ -80,7 +80,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 8,
+      id: '8',
       category: IngredientCategory.sugar,
       name: 'maple syrup',
       unitVal: 500,
@@ -88,7 +88,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 9,
+      id: '9',
       category: IngredientCategory.misc,
       name: 'baking powder',
       unitVal: 100,
@@ -96,7 +96,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 10,
+      id: '10',
       category: IngredientCategory.fruit,
       name: 'strawberry',
       unitVal: 12,
@@ -104,7 +104,7 @@ List<Ingredient> getIngredients() {
       userId: 1,
     ),
     Ingredient(
-      id: 11,
+      id: '11',
       category: IngredientCategory.sugar,
       name: 'sugar',
       unitVal: 500,

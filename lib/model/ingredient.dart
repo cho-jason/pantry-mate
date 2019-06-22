@@ -12,12 +12,20 @@ enum IngredientCategory {
 }
 
 class Ingredient {
-  final int id;
+  final String id;
   final IngredientCategory category;
   final String name;
   final int unitVal;
   final String unitType;
   final int userId;
+
+  Ingredient.fromMap(Map<String, dynamic> data, String id)
+      : this(
+            id: id,
+            category: IngredientCategory.values[data['category']],
+            name: data['name'],
+            unitVal: data['unitVal'],
+            unitType: data['unitType']);
 
   const Ingredient({
     this.id,
