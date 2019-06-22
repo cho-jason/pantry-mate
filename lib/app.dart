@@ -10,7 +10,7 @@ class PantryApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Recipes',
       theme: buildTheme(),
-      initialRoute: '/login',
+      initialRoute: '/',
       routes: {
         // If you're using navigation routes, Flutter needs a base route.
         // We're going to change this route once we're ready with
