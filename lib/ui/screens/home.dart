@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pantry_mate/utils/camera.dart';
+
 import 'package:pantry_mate/model/ingredient.dart';
 import 'package:pantry_mate/utils/store.dart';
 
@@ -50,7 +52,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Ingredient List'), actions: <Widget>[
-        IconButton(icon: Icon(Icons.camera_alt), onPressed: null)
+        IconButton(icon: Icon(Icons.camera_alt), onPressed: () => main())
       ]),
       body: _buildIngredients(),
     );

@@ -34,7 +34,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.pantry_mate"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -60,7 +60,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.firebase:firebase-core:16.0.9'
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+    api 'com.google.firebase:firebase-ml-vision-image-label-model:18.0.0'
+    api 'com.google.firebase:firebase-ml-vision-object-detection-model:17.0.0'
+    api 'com.google.firebase:firebase-ml-natural-language:20.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
