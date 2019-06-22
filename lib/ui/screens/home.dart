@@ -5,6 +5,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double _iconSize = 20.0;
 
+    RaisedButton _buildCategories(String category) {
+      return RaisedButton(onPressed: null, child: Text(category));
+    }
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -30,7 +34,60 @@ class HomeScreen extends StatelessWidget {
           child: TabBarView(
             // Placeholders for content of the tabs:
             children: [
-              Center(child: Icon(Icons.view_list)),
+              Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: _buildCategories('Meat'),
+                      ),
+                      Expanded(
+                        child: _buildCategories('Vegetable'),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: _buildCategories('Grain'),
+                      ),
+                      Expanded(
+                        child: _buildCategories('Dairy'),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: _buildCategories('Fruit'),
+                      ),
+                      Expanded(
+                        child: _buildCategories('Sugar'),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: _buildCategories('Spice'),
+                      ),
+                      Expanded(
+                        child: _buildCategories('Fat'),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: _buildCategories('Can'),
+                      ),
+                      Expanded(
+                        child: _buildCategories('Misc'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               // Center(child: Icon(Icons.restaurant)),
               // Center(child: Icon(Icons.local_cafe)),
               Center(child: Icon(Icons.camera_alt)),
