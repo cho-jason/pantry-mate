@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pantry_mate/model/ingredient.dart';
+import 'package:pantry_mate/utils/store.dart';
 
 import 'package:pantry_mate/model/user.dart';
-import 'package:pantry_mate/model/ingredient.dart';
 import 'package:pantry_mate/model/recipe.dart';
 import 'package:pantry_mate/ui/widgets/recipe_card.dart';
-import 'package:pantry_mate/utils/store.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
