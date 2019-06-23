@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pantry_mate/ui/screens/ingredient.dart';
 import 'package:pantry_mate/utils/camera.dart';
 
 import 'package:pantry_mate/model/ingredient.dart';
+import 'package:pantry_mate/utils/screen_arg.dart';
 import 'package:pantry_mate/utils/store.dart';
 
 import 'package:pantry_mate/model/user.dart';
@@ -42,17 +44,33 @@ class HomeScreenState extends State<HomeScreen> {
     String unitType = document['unitType'];
     String quantity = unitVal.toString() + ' ' + unitType;
     return ListTile(
-      title: Text(name),
-      subtitle: Text(quantity),
-      trailing: IconButton(icon: Icon(Icons.edit), onPressed: null),
-    );
+        title: Text(name),
+        subtitle: Text(quantity),
+        trailing: IconButton(
+            icon: Icon(Icons.edit),
+            // onPressed: () => Navigator.pushNamed(context, '/ingredient')),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => IngredientScreen(),
+                      settings: RouteSettings(
+                          arguments: ScreenArguments(
+                              document, name, unitVal, unitType))));
+            }));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Ingredient List'), actions: <Widget>[
-        IconButton(icon: Icon(Icons.camera_alt), onPressed: () => main())
+        IconButton(
+            icon: Icon(Icons.camera_alt),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                main();
+              }));
+            })
       ]),
       body: _buildIngredients(),
     );
