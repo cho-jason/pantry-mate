@@ -30,15 +30,16 @@ class HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(16.0),
             itemCount: snapshot.data.documents.length,
             itemBuilder: (BuildContext context, int index) {
-              return _buildRow(snapshot.data.documents[index]);
+              return _buildRow(snapshot.data.documents[index], index);
             },
           );
         });
   }
 
   Widget _buildRow(
-      DocumentSnapshot
-          document /* String name, int unitVal, String unitType */) {
+      DocumentSnapshot document /* String name, int unitVal, String unitType */,
+      index) {
+    String id = document.documentID;
     String name = document['name'];
     var unitVal = document['unitVal'];
     String unitType = document['unitType'];
@@ -56,7 +57,7 @@ class HomeScreenState extends State<HomeScreen> {
                       builder: (context) => IngredientScreen(),
                       settings: RouteSettings(
                           arguments: ScreenArguments(
-                              document, name, unitVal, unitType))));
+                              document, id, name, unitVal, unitType, index))));
             }));
   }
 
