@@ -147,10 +147,50 @@ class HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('Ingredient List'), actions: <Widget>[
         IconButton(
-            icon: Icon(Icons.camera_alt),
+            icon: Icon(Icons.image),
             onPressed: () async {
               final File imageFile =
                   await ImagePicker.pickImage(source: ImageSource.gallery);
+              final FirebaseVisionImage visionImage =
+                  FirebaseVisionImage.fromFile(imageFile);
+              TextRecognizer textRecognizer =
+                  FirebaseVision.instance.textRecognizer();
+              final VisionText visionText =
+                  await textRecognizer.processImage(visionImage);
+              // String text = visionText.text;
+              for (TextBlock block in visionText.blocks) {
+                // final Rect boundingBox = block.boundingBox;
+                // final List<Offset> cornerPoints = block.cornerPoints;
+                final String text = block.text;
+                // print('THIS IS DA TEXT:' + text);
+                textList.add(text);
+                // final List<RecognizedLanguage> languages =
+                //     block.recognizedLanguages;
+                // for (TextLine line in block.lines) {
+                // Same getters as TextBlock
+                // for (TextElement element in line.elements) {
+                //   // Same getters as TextBlock
+                //   print('THIS IS DA ELEMENT: ' + element.text + '\n');
+                // }
+                // }
+              }
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CameraListScreen(),
+                      settings: RouteSettings(
+                          arguments: CameraListArguments(textList))));
+
+              // Navigator.push(context, MaterialPageRoute(builder: (context) {
+              //   main();
+              // }));
+            }),
+        IconButton(
+            icon: Icon(Icons.camera_alt),
+            onPressed: () async {
+              final File imageFile =
+                  await ImagePicker.pickImage(source: ImageSource.camera);
               final FirebaseVisionImage visionImage =
                   FirebaseVisionImage.fromFile(imageFile);
               TextRecognizer textRecognizer =

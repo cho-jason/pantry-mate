@@ -80,13 +80,6 @@ class CameraListScreenState extends State<CameraListScreen> {
           'Unit Value:',
           style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
         ),
-        TextField(
-          decoration: InputDecoration(hintText: 'TEST'),
-          onChanged: (input) {
-            this.unitVal[index] = int.parse(input);
-            print(this.unitVal[index]);
-          },
-        ),
         TextFormField(
           decoration: InputDecoration(hintText: 'quantity / volume / weight'),
           textAlign: TextAlign.center,
