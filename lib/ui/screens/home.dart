@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pantry_mate/ui/screens/ingredient.dart';
 import 'package:pantry_mate/utils/camera.dart';
+import 'package:pantry_mate/services/crud.dart';
 
 import 'package:pantry_mate/model/ingredient.dart';
 import 'package:pantry_mate/utils/screen_arg.dart';
@@ -20,6 +21,12 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   // List<Ingredient> ingredients = getIngredients();
+  final crudObj = new CrudMethods();
+
+  String name;
+  String category;
+  String unitType;
+  var unitVal;
 
   Widget _buildIngredients(/* List<Ingredient> ing */) {
     return StreamBuilder(
@@ -61,19 +68,89 @@ class HomeScreenState extends State<HomeScreen> {
             }));
   }
 
+  Future<bool> createDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Add an Ingredient'),
+            content: Container(
+                height: 180.0,
+                width: 150.0,
+                child: Column(
+                  children: <Widget>[
+                    // Name
+                    TextField(
+                      decoration: InputDecoration(hintText: 'Ingredient Name'),
+                      onChanged: (value) {
+                        this.name = value.toLowerCase();
+                      },
+                    ),
+                    // Category
+                    TextField(
+                      decoration:
+                          InputDecoration(hintText: 'Ingredient Category'),
+                      onChanged: (value) {
+                        this.category = value.toLowerCase();
+                      },
+                    ),
+                    // UnitType
+                    TextField(
+                      decoration:
+                          InputDecoration(hintText: 'Unit of Measurement'),
+                      onChanged: (value) {
+                        this.unitType = value.toLowerCase();
+                      },
+                    ),
+                    // UnitVal
+                    TextField(
+                      decoration: InputDecoration(
+                          hintText: 'Quantity / Volume / Weight'),
+                      keyboardType: TextInputType.number,
+                      onChanged: (value) {
+                        this.unitVal = double.parse(value);
+                        if (this.unitVal % 1 == 0)
+                          this.unitVal = int.parse(value);
+                      },
+                    ),
+                  ],
+                )),
+            actions: <Widget>[
+              RaisedButton(
+                child: Text('Add'),
+                textColor: Colors.white,
+                onPressed: () async {
+                  Navigator.of(context).pop();
+
+                  await crudObj.createData({
+                    'name': this.name,
+                    'category': this.category,
+                    'unitVal': this.unitVal,
+                    'unitType': this.unitType
+                  });
+                },
+              )
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Ingredient List'), actions: <Widget>[
-        IconButton(
-            icon: Icon(Icons.camera_alt),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                main();
-              }));
-            })
-      ]),
-      body: _buildIngredients(),
-    );
+        appBar: AppBar(title: Text('Ingredient List'), actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.camera_alt),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  main();
+                }));
+              })
+        ]),
+        body: _buildIngredients(),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => createDialog(context),
+        ));
   }
 }

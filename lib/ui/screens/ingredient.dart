@@ -140,7 +140,8 @@ class IngredientScreenState extends State<IngredientScreen> {
                   decoration: InputDecoration(hintText: 'Enter a number.'),
                   keyboardType: TextInputType.number,
                   onChanged: (value) {
-                    this.unitVal = int.parse(value);
+                    this.unitVal = double.parse(value);
+                    if (this.unitVal % 1 == 0) this.unitVal = int.parse(value);
                   },
                   onSubmitted: (value) async {
                     Navigator.of(context).pop();
