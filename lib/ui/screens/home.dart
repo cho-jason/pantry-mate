@@ -1,7 +1,11 @@
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pantry_mate/ui/screens/ingredient.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:pantry_mate/utils/camera.dart';
 import 'package:pantry_mate/services/crud.dart';
 
@@ -141,10 +145,35 @@ class HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(title: Text('Ingredient List'), actions: <Widget>[
         IconButton(
             icon: Icon(Icons.camera_alt),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                main();
-              }));
+            onPressed: () async {
+              final File imageFile =
+                  await ImagePicker.pickImage(source: ImageSource.camera);
+              final FirebaseVisionImage visionImage =
+                  FirebaseVisionImage.fromFile(imageFile);
+              TextRecognizer textRecognizer =
+                  FirebaseVision.instance.textRecognizer();
+              final VisionText visionText =
+                  await textRecognizer.processImage(visionImage);
+              String text = visionText.text;
+              for (TextBlock block in visionText.blocks) {
+                final Rect boundingBox = block.boundingBox;
+                final List<Offset> cornerPoints = block.cornerPoints;
+                final String text = block.text;
+                final List<RecognizedLanguage> languages =
+                    block.recognizedLanguages;
+                print('THIS IS DA TEXT: ' + text);
+                for (TextLine line in block.lines) {
+                  // Same getters as TextBlock
+                  for (TextElement element in line.elements) {
+                    // Same getters as TextBlock
+                    print(element.toString());
+                  }
+                }
+              }
+
+              // Navigator.push(context, MaterialPageRoute(builder: (context) {
+              //   main();
+              // }));
             })
       ]),
       body: _buildIngredients(),
