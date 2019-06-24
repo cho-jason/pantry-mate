@@ -138,19 +138,31 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Ingredient List'), actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.camera_alt),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  main();
-                }));
-              })
-        ]),
-        body: _buildIngredients(),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () => createDialog(context),
-        ));
+      appBar: AppBar(title: Text('Ingredient List'), actions: <Widget>[
+        IconButton(
+            icon: Icon(Icons.camera_alt),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                main();
+              }));
+            })
+      ]),
+      body: _buildIngredients(),
+      persistentFooterButtons: <Widget>[
+        ButtonBar(
+          children: <Widget>[
+            Text(
+              'Add Ingredient',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            IconButton(
+              icon: Icon(Icons.add),
+              iconSize: 30.0,
+              onPressed: () => createDialog(context),
+            )
+          ],
+        )
+      ],
+    );
   }
 }
