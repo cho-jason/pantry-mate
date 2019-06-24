@@ -58,8 +58,13 @@ class IngredientScreenState extends State<IngredientScreen> {
                     IconButton(
                         icon: Icon(Icons.arrow_back_ios),
                         onPressed: () async {
-                          await crudObj.updateData(
-                              doc.documentID, {'unitVal': doc['unitVal'] - 1});
+                          if (doc['unitVal'] <= 1) {
+                            Navigator.of(context).pop();
+                            await crudObj.deleteData(doc.documentID);
+                          } else {
+                            await crudObj.updateData(doc.documentID,
+                                {'unitVal': doc['unitVal'] - 1});
+                          }
                         }),
                     GestureDetector(
                         onTap: () {
