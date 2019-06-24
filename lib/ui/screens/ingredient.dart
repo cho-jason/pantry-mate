@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pantry_mate/utils/screen_arg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:pantry_mate/model/ingredient.dart';
-import 'package:pantry_mate/utils/screen_arg.dart';
 import 'package:pantry_mate/services/crud.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -25,8 +22,8 @@ import 'package:pantry_mate/services/crud.dart';
 // }
 
 class IngredientScreenState extends State<IngredientScreen> {
-  final List<String> _suggestions = <String>['Hi', 'Bye', "Test"];
-  final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
+  // final List<String> _suggestions = <String>['Hi', 'Bye', "Test"];
+  // final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
 
   // @override
   // void initState() {

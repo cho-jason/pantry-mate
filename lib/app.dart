@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pantry_mate/ui/screens/camera_list.dart';
 import 'package:pantry_mate/ui/theme.dart';
 import 'package:pantry_mate/ui/screens/login.dart';
 import 'package:pantry_mate/ui/screens/home.dart';
@@ -18,6 +19,7 @@ class PantryApp extends StatelessWidget {
         // implementation of HomeScreen.
         '/': (context) => HomeScreen(),
         '/ingredient': (context) => IngredientScreen(),
+        '/cameraList': (context) => CameraListScreen(),
         '/login': (context) => LoginScreen(),
       },
     );
